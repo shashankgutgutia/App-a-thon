@@ -1,10 +1,13 @@
 package com.adgvit.appathon2k18.appathon2k18;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +17,13 @@ import android.widget.HeterogeneousExpandableList;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,13 +37,13 @@ public class ExpandableAdapter extends BaseExpandableListAdapter implements Hete
     private List<String> listDataHeader; // header titles
     SharedPreferences sp;
     // Child data in format of header title, child title
-    private HashMap<String, List<String>> listDataChild;
+    //private HashMap<String, List<String>> listDataChild;
 
 
-    public ExpandableAdapter(Context context, List<String> listDataHeader, HashMap<String, List<String>> listChildData) {
+    public ExpandableAdapter(Context context, List<String> listDataHeader) {
         this.context = context;
         this.listDataHeader = listDataHeader;
-        this.listDataChild = listChildData;
+        //this.listDataChild = listChildData;
     }
 
     @Override
@@ -43,7 +53,8 @@ public class ExpandableAdapter extends BaseExpandableListAdapter implements Hete
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this.listDataChild.get(this.listDataHeader.get(groupPosition)).size();
+        //return this.listDataChild.get(this.listDataHeader.get(groupPosition)).size();
+        return 1;
     }
 
     @Override
@@ -53,7 +64,8 @@ public class ExpandableAdapter extends BaseExpandableListAdapter implements Hete
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return this.listDataChild.get(this.listDataHeader.get(groupPosition)).get(childPosition);
+        return "";
+        //return this.listDataChild.get(this.listDataHeader.get(groupPosition)).get(childPosition);
     }
 
     @Override
@@ -80,27 +92,52 @@ public class ExpandableAdapter extends BaseExpandableListAdapter implements Hete
             convertView = inflater.inflate(R.layout.list_group, null);
         }
 
-        TextView lblListHeader = (TextView) convertView
-                .findViewById(R.id.listHeader);
+        TextView lblListHeader = (TextView) convertView.findViewById(R.id.listHeader);
+        ImageView imageView=convertView.findViewById(R.id.arrow);
+        ImageView imageView2=convertView.findViewById(R.id.grpIcon);
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle);
-
+        if (groupPosition==0){
+            imageView2.setImageResource(R.drawable.ic_date_range_24px);
+        }
+        else if(groupPosition==1){
+            imageView2.setImageResource(R.drawable.ic_signal_wifi_statusbar_2_bar_26x24px);
+        }
+        else if(groupPosition==2){
+            imageView2.setImageResource(R.drawable.ic_restaurant_menu_24px);
+        }
+        else{
+            imageView2.setImageResource(R.drawable.ic_watch_later_24px);
+        }
+        if (isExpanded) {
+            imageView.setImageResource(R.drawable.ic_arrow_up_24px);
+        } else {
+            imageView.setImageResource(R.drawable.ic_arrow_drop_up_24px);
+        }
         return convertView;
     }
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         final String childText = (String) getChild(groupPosition, childPosition);
-        LayoutInflater layoutInflater = (LayoutInflater) this.context
+        LayoutInflater layoutInflater = (LayoutInflater) parent.getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             sp=context.getSharedPreferences("key", 0);
             if(groupPosition==0) {
-
                 convertView = layoutInflater.inflate(R.layout.list_timeline, null);
             }
             else if(groupPosition==1){
-
                     convertView = layoutInflater.inflate(R.layout.list_wifi, null);
+                    String wifiname=sp.getString("wUser","");
+                    if(!wifiname.equalsIgnoreCase("")){
+                        TextView username=convertView.findViewById(R.id.userName);
+                        TextView password=convertView.findViewById(R.id.passWord);
+                        username.setText(wifiname);
+                        password.setText(sp.getString("wPass",""));
+                        username.setVisibility(View.VISIBLE);
+                        password.setVisibility(View.VISIBLE);
+                    }
+
             }
             else if(groupPosition==2) {
                 convertView = layoutInflater.inflate(R.layout.list_food, null);

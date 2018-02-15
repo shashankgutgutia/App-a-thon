@@ -1,17 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:weightSum="1"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/grpIcon"
+        android:layout_gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 
     <TextView
         android:id="@+id/listHeader"
-        android:gravity="center"
-        android:layout_width="match_parent"
+        android:gravity="start|center"
+        android:layout_weight="0.6"
+        android:text="Group Header"
+        android:layout_width="0dp"
+        android:fontFamily="sans-serif-condensed"
         android:layout_height="wrap_content"
-        android:paddingStart="?android:attr/expandableListPreferredItemPaddingLeft"
-        android:paddingEnd="?android:expandableListPreferredItemPaddingLeft"
         android:textSize="17sp"
-        android:textColor="#6d6d6d" />
+        android:textColor="#a5a5a5" />
+
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_gravity="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
 
 </LinearLayout>
