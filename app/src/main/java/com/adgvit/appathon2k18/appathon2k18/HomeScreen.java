@@ -199,6 +199,11 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void QuizMod(View v){
+        Intent intent=new Intent(HomeScreen.this, Quiz1.class);
+        startActivity(intent);
+    }
+
     public void WifiDetails (View v){
         sp= this.getSharedPreferences("key", 0);
         value=sp.getString("wUser","");

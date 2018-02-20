@@ -5,5 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#ffffff</color>
     <color name="QRCodeBlack">#000000</color>
+    <color name="quizSelected">#3F51B5</color>
+    <color name="quizUnselected">#fff</color>
+    <color name="timer">#ff0000</color>
 
 </resources>

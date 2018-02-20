@@ -38,6 +38,12 @@
             android:theme="@style/AppTheme">
         </activity>
 
+        <activity android:name=".Quiz1"
+            android:theme="@style/AppTheme">
+
+        </activity>
+
+
         <service
             android:name=".FirebaseInsIdService">
             <intent-filter>
