@@ -124,7 +124,7 @@ public class HomeScreen extends AppCompatActivity {
 
         frameLayout=findViewById(R.id.homeLayout);
         //TODO Color Status Bar
-       /* Window window = this.getWindow();
+        Window window = this.getWindow();
 
 // clear FLAG_TRANSLUCENT_STATUS flag:
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -133,17 +133,53 @@ public class HomeScreen extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 // finally change the color
-        window.setStatusBarColor(ContextCompat.getColor(this,R.color.red));
 
-        */
 
-        if (localTime.equals("15"))
+
+
+        if (localTime.equals("15")|| localTime.equals("14"))
         {
             frameLayout.setBackgroundResource(R.drawable.t3to4pm);
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.c3to4pm));
         }
-        if (localTime.equals("12") || localTime.equals("13"))
+        else if (localTime.equals("12") || localTime.equals("13"))
         {
             frameLayout.setBackgroundResource(R.drawable.noonto3pm);
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.noonto3pm));
+        }
+        else if (localTime.equals("11"))
+        {
+            frameLayout.setBackgroundResource(R.drawable.t11tonoon);
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.c11tonoon));
+        }
+        else if (localTime.equals("16") || localTime.equals("17"))
+        {
+            frameLayout.setBackgroundResource(R.drawable.t5to6pm);
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.c5to6pm));
+        }
+        else if (localTime.equals("5") || localTime.equals("6")|| localTime.equals("7"))
+        {
+            frameLayout.setBackgroundResource(R.drawable.t5to8am);
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.c5to8am));
+        }
+        else if (localTime.equals("18"))
+        {
+            frameLayout.setBackgroundResource(R.drawable.t6to7pm);
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.c6to7pm));
+        }
+        else if (localTime.equals("19"))
+        {
+            frameLayout.setBackgroundResource(R.drawable.t7to8pm);
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.c7to8pm));
+        }
+        else if (localTime.equals("8")|| localTime.equals("9")|| localTime.equals("10"))
+        {
+            frameLayout.setBackgroundResource(R.drawable.t8to10am);
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.c8to10am));
+        }
+        else{
+            frameLayout.setBackgroundResource(R.drawable.t8pmto5am);
+            window.setStatusBarColor(ContextCompat.getColor(this,R.color.c8to5am));
         }
 
 

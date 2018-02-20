@@ -7,6 +7,16 @@
     <color name="QRCodeBlack">#000000</color>
     <color name="quizSelected">#3F51B5</color>
     <color name="quizUnselected">#fff</color>
-    <color name="timer">#ff0000</color>
+    <color name="timer"> #ff0000 </color>
+    <color name="c11tonoon">#ff924f</color>
+    <color name="c3to4pm">#f2da26</color>
+    <color name="c5to6pm">#0f6bff</color>
+    <color name="c5to8am">#99deff</color>
+    <color name="c6to7pm">#b356ff</color>
+    <color name="c7to8pm">#362fc4</color>
+    <color name="c8to5am">#555463</color>
+    <color name="c8to10am">#54acff</color>
+    <color name="noonto3pm">#e24700</color>
+
 
 </resources>
