@@ -129,11 +129,12 @@ public class ExpandableAdapter extends BaseExpandableListAdapter implements Hete
             else if(groupPosition==1){
                     convertView = layoutInflater.inflate(R.layout.list_wifi, null);
                     String wifiname=sp.getString("wUser","");
-                    if(!wifiname.equalsIgnoreCase("")){
+                    String wifipass=sp.getString("wPass","");
+                    if(!wifiname.equalsIgnoreCase("")||!wifipass.equalsIgnoreCase("") ){
                         TextView username=convertView.findViewById(R.id.userName);
                         TextView password=convertView.findViewById(R.id.passWord);
                         username.setText(wifiname);
-                        password.setText(sp.getString("wPass",""));
+                        password.setText(wifipass);
                         username.setVisibility(View.VISIBLE);
                         password.setVisibility(View.VISIBLE);
                     }
@@ -143,11 +144,17 @@ public class ExpandableAdapter extends BaseExpandableListAdapter implements Hete
                 convertView = layoutInflater.inflate(R.layout.list_food, null);
                 ImageView imageView= (ImageView) convertView.findViewById(R.id.barcode);
                 String prevEncodedImage=sp.getString("food","");
+                Boolean fstatus=sp.getBoolean("fcheck",false);
                 if(!prevEncodedImage.equalsIgnoreCase("")){
                     byte[] b= Base64.decode(prevEncodedImage,Base64.DEFAULT);
                     Bitmap bitmap= BitmapFactory.decodeByteArray(b,0,b.length);
                     imageView.setImageBitmap(bitmap);
                 }
+                if(fstatus){
+                    TextView status=convertView.findViewById(R.id.redeem);
+                    status.setText(R.string.food_check);
+                }
+
             }
             else{
                 convertView = layoutInflater.inflate(R.layout.list_quiz, null);

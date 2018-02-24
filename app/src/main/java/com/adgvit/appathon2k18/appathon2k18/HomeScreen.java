@@ -247,6 +247,43 @@ public class HomeScreen extends AppCompatActivity {
            new GetWifi().execute();
         }
     }
+    public void CheckFood(View v){
+        sp= this.getSharedPreferences("key", 0);
+        Boolean foodstats=sp.getBoolean("fcheck",false);
+        if(!foodstats) {
+            new CheckFoodStatus().execute();
+        }
+    }
+
+    class CheckFoodStatus extends AsyncTask<Void,Void,Void>{
+
+        Boolean foodStats;
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            sp = HomeScreen.this.getSharedPreferences("key", 0);
+            String Reg_Num = sp.getString("Reg_Num", "");
+            FirebaseDatabase mFirebaseDatabase=FirebaseDatabase.getInstance();
+            DatabaseReference UserRef=mFirebaseDatabase.getReference().child(Reg_Num).child("refreshmentsStatus");
+            UserRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    foodStats =dataSnapshot.getValue(Boolean.class);
+                    SharedPreferences.Editor sedt1 = sp.edit();
+                    sedt1.putBoolean("fcheck", foodStats);
+                    sedt1.apply();
+                    listAdapter.notifyDataSetChanged();
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            return null;
+        }
+    }
 
     public class RelativeLayoutTouchListener implements View.OnTouchListener {
 
@@ -324,24 +361,27 @@ public class HomeScreen extends AppCompatActivity {
 
     class GetWifi extends AsyncTask<Void,Void,Void>{
 
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            listAdapter.notifyDataSetChanged();
-        }
+        final String[] userName = new String[1];
+        final String[] passWord = new String[1];
 
         @Override
         protected Void doInBackground(Void... voids) {
             sp = HomeScreen.this.getSharedPreferences("key", 0);
             String Reg_Num = sp.getString("Reg_Num", "");
-            final String[] userName = new String[1];
-            final String[] passWord = new String[1];
             FirebaseDatabase mFirebaseDatabase=FirebaseDatabase.getInstance();
-            DatabaseReference UserRef=mFirebaseDatabase.getReference().child(Reg_Num).child("WiFiUsername");
-            DatabaseReference PassRef=mFirebaseDatabase.getReference().child(Reg_Num).child("WiFiPassword");
+            DatabaseReference UserRef=mFirebaseDatabase.getReference().child(Reg_Num).child("wifiUsername");
+            DatabaseReference PassRef=mFirebaseDatabase.getReference().child(Reg_Num).child("wifiPassword");
             UserRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     userName[0] =dataSnapshot.getValue(String.class);
+                    SharedPreferences.Editor sedt1 = sp.edit();
+                    sedt1.putString("wUser", userName[0]);
+                    sedt1.apply();
+                    listAdapter.notifyDataSetChanged();
+                    Log.d("Hello",userName[0]);
+
+
                 }
 
                 @Override
@@ -353,6 +393,11 @@ public class HomeScreen extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     passWord[0] =dataSnapshot.getValue(String.class);
+                    SharedPreferences.Editor sedt1 = sp.edit();
+                    sedt1.putString("wPass", passWord[0]);
+                    sedt1.apply();
+                    listAdapter.notifyDataSetChanged();
+                    Log.d("Hello",passWord[0]);
                 }
 
                 @Override
@@ -360,11 +405,6 @@ public class HomeScreen extends AppCompatActivity {
 
                 }
             });
-
-            SharedPreferences.Editor sedt1 = sp.edit();
-            sedt1.putString("wUser", userName[0]);
-            sedt1.putString("wPass", passWord[0]);
-            sedt1.apply();
             return null;
         }
     }

@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "54455911190",
-    "firebase_url": "https://appathon2k18-cd5a7.firebaseio.com",
-    "project_id": "appathon2k18-cd5a7",
-    "storage_bucket": "appathon2k18-cd5a7.appspot.com"
+    "project_number": "787118194938",
+    "firebase_url": "https://app-a-thon-ios.firebaseio.com",
+    "project_id": "app-a-thon-ios",
+    "storage_bucket": "app-a-thon-ios.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:54455911190:android:1611b85ff639841f",
+        "mobilesdk_app_id": "1:787118194938:android:dce675681ab0375e",
         "android_client_info": {
-          "package_name": "com.adgvit.appathon2k18.appathon2k18"
+          "package_name": "com.backgroundchange.changebackgroundapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "54455911190-0qa5ksu7ir6mulrqh9ttk6tiphod5ilj.apps.googleusercontent.com",
+          "client_id": "787118194938-1u2sn35n1hgvgaonjode92q57htm5hv5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.adgvit.appathon2k18.appathon2k18",
-            "certificate_hash": "0cbdc866fe31276be1d44e8823c8a33a56bc215e"
+            "package_name": "com.backgroundchange.changebackgroundapp",
+            "certificate_hash": "e25938278698e57a74a4a2841511fea5650452ec"
           }
         },
         {
-          "client_id": "54455911190-rnl816626ro3iemmbd1qseplu89hsjre.apps.googleusercontent.com",
+          "client_id": "787118194938-ii4qej5mmb0ei77v8e03r1s4vjps21f0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBA-7wCYxJVu9ayJUVNOnEiS9MkMFVFToU"
+          "current_key": "AIzaSyC0EDZ1xY9YU9_j1gkUt3uCauR18tQKkas"
         }
       ],
       "services": {
@@ -40,8 +40,66 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "54455911190-rnl816626ro3iemmbd1qseplu89hsjre.apps.googleusercontent.com",
+              "client_id": "787118194938-ii4qej5mmb0ei77v8e03r1s4vjps21f0.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "787118194938-0vpf5lktg2dupkd652ogeeej3isgq4kr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ap.App-A-Thon"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787118194938:android:1611b85ff639841f",
+        "android_client_info": {
+          "package_name": "com.adgvit.appathon2k18.appathon2k18"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787118194938-d336qdl19oij7balqm64u87qouek7u68.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.adgvit.appathon2k18.appathon2k18",
+            "certificate_hash": "e25938278698e57a74a4a2841511fea5650452ec"
+          }
+        },
+        {
+          "client_id": "787118194938-ii4qej5mmb0ei77v8e03r1s4vjps21f0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0EDZ1xY9YU9_j1gkUt3uCauR18tQKkas"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787118194938-ii4qej5mmb0ei77v8e03r1s4vjps21f0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "787118194938-0vpf5lktg2dupkd652ogeeej3isgq4kr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ap.App-A-Thon"
+              }
             }
           ]
         },
